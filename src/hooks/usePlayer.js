@@ -11,9 +11,10 @@ export const usePlayer = () => {
     });
 
     const rotate = (matrix, dir) => {
-        // Make the rows to become cols (transpose)
+        // col로 행들을 만듦
         const rotatedTetro = matrix.map((_, index) => matrix.map(col => col[index]));
-        // Reverse each row to get a rotated matrix
+
+        // 회전된 블록을 위해 각 행을 뒤집었음
         if (dir > 0) return rotatedTetro.map(row => row.reverse());
         return rotatedTetro.reverse();
     };

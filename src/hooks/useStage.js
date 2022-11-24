@@ -1,5 +1,3 @@
-
-
 import { useState, useEffect } from 'react';
 import { createStage } from '../gameHelpers';
 
@@ -21,12 +19,12 @@ export const useStage = (player, resetPlayer) => {
             }, []);
 
         const updateStage = prevStage => {
-            // First flush the stage
+            // cell들을 map으로 테트리스 틀 생성
             const newStage = prevStage.map(row =>
                 row.map(cell => (cell[1] === 'clear' ? [0, 'clear'] : cell))
             );
 
-            // Then draw the tetromino
+            // 테트리스 블록 생성, 기능
             player.tetromino.forEach((row, y) => {
                 row.forEach((value, x) => {
                     if (value !== 0) {
@@ -37,7 +35,7 @@ export const useStage = (player, resetPlayer) => {
                     }
                 });
             });
-            // Then check if we got some score if collided
+            // 블록을 채울 시 줄을 없애는지 확인
             if (player.collided) {
                 resetPlayer();
                 return sweepRows(newStage);
@@ -45,7 +43,7 @@ export const useStage = (player, resetPlayer) => {
             return newStage;
         };
 
-        // Here are the updates
+        // 상태 값들
         setStage(prev => updateStage(prev));
     }, [
         player.collided,
