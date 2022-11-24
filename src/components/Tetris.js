@@ -25,7 +25,7 @@ const Tetris = () => {
 
     );
 
-    console.log('re-render');
+    // console.log('re-render');
 
     const movePlayer = dir => {
         if (!checkCollision(player, stage, { x: dir, y: 0 })) {
@@ -65,7 +65,7 @@ const Tetris = () => {
         } else {
             // Game over!
             if (player.pos.y < 1) {
-                console.log('GAME OVER!!!');
+                // console.log('GAME OVER!!!');
                 setGameOver(true);
                 setDropTime(null);
             }
